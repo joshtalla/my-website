@@ -1,0 +1,185 @@
+.home__hero {
+    position: relative;
+    /* fill viewport minus navbar (nav height is set via a CSS var by Hero.tsx) */
+    min-height: calc(100vh - var(--nav-height, 0px));
+    display: flex;
+    align-items: center;
+    /* vertical center */
+    justify-content: center;
+    padding: 3rem 1rem;
+    box-sizing: border-box;
+}
+
+/* Decorative animated background - two layered gradients that crossfade */
+.hero__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    filter: blur(48px) saturate(140%);
+    background: none;
+    /* gradients provided by pseudo-elements */
+    /* translate values are applied via CSS variables updated by JS for parallax */
+    --bg-translate-x: 0px;
+    --bg-translate-y: 0px;
+    --bg-scroll-y: 0px;
+    transform: translate3d(var(--bg-translate-x), calc(var(--bg-translate-y) + var(--bg-scroll-y)), 0);
+    animation: hero-bg-move 12s linear infinite;
+    pointer-events: none;
+}
+
+/* Use pseudo-elements so we can crossfade gradients smoothly (opacity animation) */
+.hero__bg::before,
+.hero__bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    filter: blur(48px) saturate(140%);
+}
+
+.hero__bg::before {
+    background-image: radial-gradient(circle at 5% 15%, rgba(100, 108, 255, 0.28), transparent 28%),
+        radial-gradient(circle at 85% 85%, rgba(100, 200, 255, 0.16), transparent 28%);
+    opacity: 1;
+}
+
+.hero__bg::after {
+    background-image: radial-gradient(circle at 5% 15%, rgba(120, 200, 180, 0.26), transparent 28%),
+        radial-gradient(circle at 85% 85%, rgba(90, 160, 255, 0.14), transparent 28%);
+    opacity: 0;
+    animation: hero-bg-fade 90s ease-in-out infinite;
+}
+
+@keyframes hero-bg-fade {
+    0% {
+        opacity: 0
+    }
+
+    10% {
+        opacity: 0.25
+    }
+
+    40% {
+        opacity: 0.6
+    }
+
+    60% {
+        opacity: 0.6
+    }
+
+    90% {
+        opacity: 0.25
+    }
+
+    100% {
+        opacity: 0
+    }
+}
+
+.home__hero__content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.home__title {
+    font-size: 2.25rem;
+    margin: 0 0 0.5rem 0;
+}
+
+.home__subtitle {
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0 0 1.25rem 0;
+}
+
+/* typing caret visuals */
+.home__subtitle.typing::after {
+    content: '';
+    display: inline-block;
+    width: 1px;
+    height: 1.05em;
+    background: rgba(255, 255, 255, 0.9);
+    margin-left: 6px;
+    vertical-align: text-bottom;
+    animation: caret-blink 700ms steps(1) infinite;
+}
+
+.home__subtitle.typed::after {
+    display: none
+}
+
+@keyframes caret-blink {
+    0% {
+        opacity: 1
+    }
+
+    50% {
+        opacity: 0
+    }
+
+    100% {
+        opacity: 1
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .home__subtitle.typing::after {
+        animation: none;
+        opacity: 1
+    }
+}
+
+.home__actions {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    background: #646cff;
+    color: white;
+    text-decoration: none;
+}
+
+.btn--muted {
+    background: rgba(255, 255, 255, 0.08);
+    color: inherit;
+}
+
+@media (min-width: 640px) {
+    .home__title {
+        font-size: 3rem
+    }
+}
+
+@keyframes hero-bg-move {
+    0% {
+        transform: translate3d(0, 0, 0)
+    }
+
+    50% {
+        transform: translate3d(40px, -20px, 0)
+    }
+
+    100% {
+        transform: translate3d(0, 0, 0)
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero__bg {
+        animation: none;
+        filter: blur(30px)
+    }
+}

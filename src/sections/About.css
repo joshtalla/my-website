@@ -1,0 +1,150 @@
+.about {
+    padding: 3rem 1rem;
+}
+
+.about__inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 2rem;
+    align-items: start;
+    /* subtle colorful accents behind the card */
+    background:
+        radial-gradient(circle at 10% 20%, rgba(100, 108, 255, 0.08) 0%, rgba(100, 108, 255, 0.02) 30%, transparent 60%),
+        radial-gradient(circle at 90% 80%, rgba(120, 200, 180, 0.06) 0%, rgba(120, 200, 180, 0.02) 30%, transparent 60%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0));
+    padding: 1.25rem;
+    border-radius: 12px;
+    position: relative;
+    box-sizing: border-box;
+    overflow: visible;
+}
+
+/* subtle patterned texture behind the about card using an inline SVG */
+.about__inner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    z-index: 0;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'><g fill='none' fill-rule='evenodd'><rect width='40' height='40' fill='none'/><circle cx='10' cy='10' r='0.9' fill='%23ffffff' opacity='0.06'/><circle cx='30' cy='10' r='0.9' fill='%23ffffff' opacity='0.06'/><circle cx='10' cy='30' r='0.9' fill='%23ffffff' opacity='0.06'/><circle cx='30' cy='30' r='0.9' fill='%23ffffff' opacity='0.06'/></g></svg>");
+    background-repeat: repeat;
+    mix-blend-mode: overlay;
+    opacity: 0.06;
+}
+
+/* ensure the pseudo-element sits behind content inside the card */
+.about__inner>* {
+    position: relative;
+    z-index: 1
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .about__inner::before {
+        opacity: 0.6
+    }
+}
+
+@media print {
+    .about__inner::before {
+        display: none
+    }
+}
+
+.about__avatar {
+    width: 240px;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 14px;
+    border: 2px solid rgba(255, 255, 255, 0.06);
+    display: block;
+    margin: 0 auto;
+}
+
+.about__left {
+    text-align: center
+}
+
+.about__name {
+    margin: 0.75rem 0 0.25rem 0;
+    font-size: 1.25rem;
+}
+
+.about__highlights {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 0.95rem;
+}
+
+.about__stats {
+    margin-top: 1rem;
+    display: grid;
+    gap: 0.75rem
+}
+
+.stat {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.02);
+    padding: 0.5rem;
+    border-radius: 8px
+}
+
+.stat__icon {
+    font-size: 1.25rem
+}
+
+.stat__value {
+    font-weight: 700
+}
+
+.stat__label {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7)
+}
+
+.about__content.revamp {
+    padding: 0.25rem 0
+}
+
+.about__title {
+    margin: 0 0 0.75rem 0;
+}
+
+.about__sub {
+    margin: 0 0 0.5rem 0;
+    color: #78a9ff;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem
+}
+
+.about__block {
+    margin-bottom: 1rem;
+    max-width: 65ch;
+    line-height: 1.6
+}
+
+.about__block p {
+    margin: 0 0 1rem 0;
+    color: rgba(255, 255, 255, 0.92)
+}
+
+@media (max-width: 720px) {
+    .about__inner {
+        grid-template-columns: 1fr;
+    }
+
+    .about__avatar {
+        width: 160px;
+        height: 160px;
+        margin: 0 auto 1rem auto
+    }
+
+    .about__inner {
+        padding: 0
+    }
+}
