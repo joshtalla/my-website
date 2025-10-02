@@ -147,9 +147,9 @@ const Contact: React.FC = () => {
                         </button>
                     </div>
                 </form>
-                <p style={{ marginTop: '0.5rem', fontSize: '0.9rem', color: 'rgba(0,0,0,0.6)' }}>
+                {/* <p style={{ marginTop: '0.5rem', fontSize: '0.9rem', color: 'rgba(0,0,0,0.6)' }}>
                     Note: messages are delivered via a server endpoint. Configure <code>VITE_FORMSPREE_ENDPOINT</code> in your <code>.env</code> if you use Formspree.
-                </p>
+                </p> */}
             </div>
         </section>
     );
