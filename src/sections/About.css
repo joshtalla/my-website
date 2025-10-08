@@ -133,6 +133,26 @@
     color: rgba(255, 255, 255, 0.92)
 }
 
+.about__content p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    color: var(--text-secondary);
+    text-align: justify;
+}
+
+.project-card__bullets {
+    list-style: disc;
+    padding-left: 1.25rem;
+    margin: 0.75rem 0 0 0;
+    text-align: left;
+}
+
+.project-card__bullets li {
+    margin-bottom: 0.5rem;
+    text-align: left;
+}
+
 @media (max-width: 720px) {
     .about__inner {
         grid-template-columns: 1fr;
