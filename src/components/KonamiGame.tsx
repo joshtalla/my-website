@@ -9,13 +9,13 @@ const KONAMI_CODE = [
 ];
 
 export default function KonamiGame() {
-    // Rename to keySequence to clarify its purpose, and we'll reference it in comments
-    const [keySequence, setKeySequence] = useState<string[]>([]);
+    // track the sequence in a ref instead:
+    const keySequenceRef = useRef<string[]>([]);
     const [isGameVisible, setIsGameVisible] = useState(false);
     const closeButtonRef = useRef<HTMLButtonElement>(null);
 
     const resetSequence = useCallback(() => {
-        setKeySequence([]); // We use this state, so keep it
+        keySequenceRef.current = [];
     }, []);
 
     const showGame = useCallback(() => {
@@ -23,7 +23,6 @@ export default function KonamiGame() {
         document.body.style.overflow = 'hidden';
         resetSequence();
 
-        // Focus the close button after a brief delay to allow the modal to render
         setTimeout(() => {
             if (closeButtonRef.current) {
                 closeButtonRef.current.focus();
@@ -47,28 +46,28 @@ export default function KonamiGame() {
         }
 
         const key = e.code;
+        const prevSequence = keySequenceRef.current;
+        const newSequence = [...prevSequence, key];
 
-        setKeySequence(prevSequence => { // Updated to use keySequence
-            const newSequence = [...prevSequence, key];
+        // Check if the key matches the expected position in the Konami code
+        const expectedKey = KONAMI_CODE[prevSequence.length];
 
-            // Check if the key matches the expected position in the Konami code
-            const expectedKey = KONAMI_CODE[prevSequence.length];
-
-            if (key === expectedKey) {
-                // If we've completed the sequence
-                if (newSequence.length === KONAMI_CODE.length) {
-                    setTimeout(showGame, 100); // Small delay for better UX
-                    return [];
-                }
-                return newSequence;
-            } else {
-                // Reset if wrong key (unless it's the first key of the sequence)
-                if (key === KONAMI_CODE[0]) {
-                    return [key];
-                }
-                return [];
+        if (key === expectedKey) {
+            // If we've completed the sequence
+            if (newSequence.length === KONAMI_CODE.length) {
+                setTimeout(showGame, 100); // Small delay for better UX
+                keySequenceRef.current = [];
+                return;
             }
-        });
+            keySequenceRef.current = newSequence;
+        } else {
+            // Reset if wrong key (unless it's the first key of the sequence)
+            if (key === KONAMI_CODE[0]) {
+                keySequenceRef.current = [key];
+            } else {
+                keySequenceRef.current = [];
+            }
+        }
     }, [isGameVisible, showGame]);
 
     const handleOverlayClick = useCallback((e: React.MouseEvent) => {

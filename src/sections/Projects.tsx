@@ -4,7 +4,6 @@ import reactLogo from '../assets/react.svg'
 import uciThumb from '../assets/UCI Search Engine/SE_thumbnail.png'
 import alliThumb from '../assets/Alli/Alli_thumbnail.png'
 import paperThumb from '../assets/Paper/thumbnail.png'
-import paperPdf from '../assets/Paper/Experimental-CNN-RNN-Emotion-Prediction.pdf'
 import zotThumb from '../assets/ZotLabs/thumbnail.png'
 
 export default function Projects() {
