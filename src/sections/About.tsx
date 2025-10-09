@@ -1,47 +1,66 @@
+import StatCard from '../components/StatCard'
+import ClickGame from '../components/ClickGame'
+import { useProjects } from '../contexts/ProjectsContext'
 import './About.css'
 import profilePic from '../assets/profile-pic.jpg'
-import StatCard from '../components/StatCard'
-import { useProjects } from '../contexts/ProjectsContext'
 
 export default function About() {
     const { openProject } = useProjects()
+
     return (
-        <section id="about" className="about">
-            <div className="about__inner revamp">
-                <aside className="about__left">
-                    <img loading="lazy" className="about__avatar" src={profilePic} alt="Josh Talla" />
-                    <h3 className="about__name">Josh Talla</h3>
-                    <p className="about__highlights">Computer Science @ UCI • Web Developer • Full-Stack Developer</p>
+        <section className="about" id="about">
+            <div className="about__inner">
+                <div className="about__left">
+                    <img src={profilePic} alt="Josh Talla" className="about__avatar" />
+                    <h2 className="about__name">Josh Talla</h2>
+                    <p className="about__highlights">Full-Stack Developer & AI Enthusiast</p>
 
                     <div className="about__stats">
-                        <StatCard icon="🏆" value="Best UX" label="FUSION Demo Day" onClick={() => openProject && openProject('ZotLabs')} />
-                        <StatCard icon="🧠" value="96.72%" label="Model accuracy" onClick={() => openProject && openProject('Experimental CNN-RNN Approaches for Emotion Prediction via Facial Features')} />
-                        <StatCard icon="🤖" value="Alli" label="AI social coach" onClick={() => openProject && openProject('Alli')} />
+                        <StatCard
+                            icon="🏆"
+                            value="Best UX"
+                            label="FusionCon Award"
+                            onClick={() => openProject('ZotLabs')}
+                        />
+                        <StatCard
+                            icon="🧠"
+                            value="96.72%"
+                            label="Model Accuracy"
+                            onClick={() => openProject('Experimental CNN-RNN Approaches for Emotion Prediction via Facial Features')}
+                        />
+                        <StatCard
+                            icon="🤖"
+                            value="Alli"
+                            label="AI Social Platform"
+                            onClick={() => openProject('Alli')}
+                        />
                     </div>
-                </aside>
+
+                    <ClickGame />
+                </div>
 
                 <div className="about__content revamp">
-                    <h2 className="about__title">About</h2>
+                    <h2 className="about__title">About Me</h2>
+                    <p className="about__sub">
+                        <span>🚀</span>
+                        Building the future, one line at a time
+                    </p>
 
-                    <section className="about__block">
-                        <h4 className="about__sub">My Mission</h4>
-                        <p><strong>Hello!</strong> I'm Josh Talla, a Computer Science student at the University of California-Irvine with a passion for building applications that are both intelligent and deeply user-centric. My coursework in <strong>Machine Learning</strong>, <strong>Artificial Intelligence</strong>, and <strong>Natural Language Processing</strong> has equipped me to tackle complex technical challenges and create data-driven solutions.</p>
-                    </section>
-
-                    <section className="about__block">
-                        <h4 className="about__sub">Intelligent Applications</h4>
-                        <p>I believe the most impactful technology is that which understands and enhances human interaction. This belief drove me to create <strong>Alli</strong>, an AI-powered social media platform designed to foster genuine connections through anonymous, text-based interactions. The platform features an emotionally intelligent AI social coach that leverages Affective Computing and <strong>HumeAI</strong> APIs to guide users through multimodal emotion recognition. I have also engineered a high-performance search engine for UCI that uses AI-powered summaries and designed a deep learning model that classifies human emotions from facial features with <strong>96.72% accuracy</strong>.</p>
-                    </section>
-
-                    <section className="about__block">
-                        <h4 className="about__sub">User-Centric Design</h4>
-                        <p>My professional experience is centered on creating polished and intuitive digital experiences. As a Web Developer for <strong>Steelicon</strong>, I develop clean, modern, and responsive user interfaces using <strong>React</strong>. I translate business requirements into high-fidelity prototypes in Figma and build reusable, component-based UI elements to ensure scalability and maintainability. My work as a Full-Stack Developer on <strong>ZotLabs</strong> was awarded <strong>"Best User Experience"</strong> at FUSION Demo Day for its intuitive interface and student-centric workflows.</p>
-                    </section>
-
-                    <section className="about__block">
-                        <h4 className="about__sub">Other Work</h4>
-                        <p>Whether it's optimizing a website for performance and SEO or tutoring the next generation of coders in Python and JavaScript, I am committed to writing clean code and solving problems creatively. I am always excited to apply my skills in software architecture and data science to build applications that are not only functional and scalable but also accessible and engaging for everyone.</p>
-                    </section>
+                    <div className="about__block">
+                        <p>
+                            I'm a passionate full-stack developer and AI enthusiast currently pursuing my studies at UC Irvine.
+                            I love creating innovative solutions that bridge the gap between human needs and cutting-edge technology.
+                        </p>
+                        <p>
+                            My expertise spans from building responsive web applications with modern frameworks to developing
+                            intelligent systems using machine learning and AI. I'm particularly interested in the intersection
+                            of human-computer interaction and emotional intelligence in technology.
+                        </p>
+                        <p>
+                            When I'm not coding, you can find me exploring new technologies, contributing to open source projects,
+                            or working on research that pushes the boundaries of what's possible with AI and web development.
+                        </p>
+                    </div>
                 </div>
             </div>
         </section>
