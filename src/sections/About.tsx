@@ -1,5 +1,4 @@
 import StatCard from '../components/StatCard'
-import ClickGame from '../components/ClickGame'
 import { useProjects } from '../contexts/ProjectsContext'
 import './About.css'
 import profilePic from '../assets/profile-pic.jpg'
@@ -35,8 +34,6 @@ export default function About() {
                             onClick={() => openProject('Alli')}
                         />
                     </div>
-
-                    <ClickGame />
                 </div>
 
                 <div className="about__content revamp">
