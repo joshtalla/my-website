@@ -14,7 +14,7 @@ export default function Projects() {
             role: 'Information Systems and Retrieval',
             dateRange: 'Dec 2024 - May 2025',
             summary: 'Search Engine based off of Unversity of California-Irvine webpages.',
-            link: 'https://github.com/TallaJ/UCI-Search-Engine',
+            link: 'https://github.com/joshtalla/UCI-Search-Engine',
             imageUrl: uciThumb,
             bullets: [
                 'Developed a high-performance search engine with a custom web crawler to index webpages from UCI, utilizing an inverted index with memory-optimized structures for sub-300ms query retrieval.',
@@ -27,7 +27,7 @@ export default function Projects() {
             role: 'Artificial Intelligence, Web Development',
             dateRange: 'Feb 2025 - Mar 2025',
             summary: 'Social media web platform focused on inclusivity and connection with AI-assistance.',
-            link: 'https://github.com/charlieweinberger/Alli',
+            link: 'https://github.com/joshtalla/Alli',
             imageUrl: alliThumb,
             bullets: [
                 'Developed an AI-driven social media platform that fosters genuine connections through anonymous, text-based interaction-reducing visual bias and promoting inclusivity.',
@@ -53,8 +53,7 @@ export default function Projects() {
             role: 'Machine Learning, Data Mining',
             dateRange: 'Dec 2024 - Feb 2025',
             summary: 'Research paper on CNN-RNN hybrid models for emotion classification from facial features.',
-            // Suggestion: place PDF under /assets/papers/ or host externally (arXiv/GDrive) and link here
-            link: paperPdf,
+            link: 'https://github.com/joshtalla/Emotion_Facial_Recognition',
             imageUrl: paperThumb,
             bullets: [
                 "Designed and trained a deep learning model to classify human emotions using facial features from the Facial Expressions Vision Dataset (13,000+ images, 8 emotion classes).",

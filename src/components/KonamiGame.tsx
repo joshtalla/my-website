@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import ClickGame from './ClickGame';
 import './KonamiGame.css';
 
@@ -11,6 +11,7 @@ const KONAMI_CODE = [
 export default function KonamiGame() {
     const [sequence, setSequence] = useState<string[]>([]);
     const [isGameVisible, setIsGameVisible] = useState(false);
+    const closeButtonRef = useRef<HTMLButtonElement>(null);
 
     const resetSequence = useCallback(() => {
         setSequence([]);
@@ -20,6 +21,13 @@ export default function KonamiGame() {
         setIsGameVisible(true);
         document.body.style.overflow = 'hidden';
         resetSequence();
+
+        // Focus the close button after a brief delay to allow the modal to render
+        setTimeout(() => {
+            if (closeButtonRef.current) {
+                closeButtonRef.current.focus();
+            }
+        }, 100);
     }, [resetSequence]);
 
     const hideGame = useCallback(() => {
@@ -111,6 +119,7 @@ export default function KonamiGame() {
                 <div className="konami-game__header">
                     <h2 id="konami-game-title">🎮 Secret Game Unlocked!</h2>
                     <button
+                        ref={closeButtonRef}
                         className="konami-game__close"
                         onClick={hideGame}
                         aria-label="Close game"

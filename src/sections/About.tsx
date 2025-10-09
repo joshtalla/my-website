@@ -33,6 +33,12 @@ export default function About() {
                             label="AI Social Platform"
                             onClick={() => openProject('Alli')}
                         />
+                        <StatCard
+                            icon="💻"
+                            value="GitHub"
+                            label="Check out my stuff!"
+                            onClick={() => window.open('https://github.com/joshtalla', '_blank')}
+                        />
                     </div>
                 </div>
 
