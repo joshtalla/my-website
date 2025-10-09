@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Home from './pages/Home'
+import HeroBg from './components/HeroBg'
 import KonamiGame from './components/KonamiGame'
 import { ProjectsProvider } from './contexts/ProjectsContext'
 import './App.css'
@@ -12,6 +13,9 @@ function App() {
     <ProjectsProvider>
       <Router>
         <div className="App">
+          {/* Page background */}
+          <HeroBg />
+
           <Navbar />
           <main>
             <Routes>

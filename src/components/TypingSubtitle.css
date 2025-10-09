@@ -1,0 +1,54 @@
+.typing-subtitle {
+    font-size: 1.5rem;
+    line-height: 1.4;
+    font-weight: 500;
+    color: var(--text-secondary, rgba(255, 255, 255, 0.8));
+    margin: 0.5rem auto 1.5rem;
+    height: 2.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Center the typing text */
+    width: 100%;
+    text-align: center;
+    /* Ensure text is centered */
+}
+
+.typing-subtitle__text {
+    display: inline-block;
+}
+
+.typing-subtitle__cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1.6em;
+    background-color: var(--accent, #78a9ff);
+    margin-left: 4px;
+    animation: cursor-blink 1.2s infinite;
+}
+
+@keyframes cursor-blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .typing-subtitle__cursor {
+        animation: none;
+        opacity: 0.7;
+    }
+}
+
+@media (max-width: 720px) {
+    .typing-subtitle {
+        font-size: 1.3rem;
+        height: 1.8rem;
+    }
+}

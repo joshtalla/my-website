@@ -1,185 +1,129 @@
-.home__hero {
+.hero {
     position: relative;
-    /* fill viewport minus navbar (nav height is set via a CSS var by Hero.tsx) */
-    min-height: calc(100vh - var(--nav-height, 0px));
+    min-height: 100vh;
+    width: 100%;
     display: flex;
     align-items: center;
-    /* vertical center */
     justify-content: center;
-    padding: 3rem 1rem;
+    padding: 2rem;
     box-sizing: border-box;
+    overflow: hidden;
+    /* Add margin-bottom to ensure there's space after the hero section */
+    margin-bottom: 1rem;
+    /* Ensure the hero section has proper positioning context */
+    isolation: isolate;
 }
 
-/* Decorative animated background - two layered gradients that crossfade */
-.hero__bg {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    filter: blur(48px) saturate(140%);
-    background: none;
-    /* gradients provided by pseudo-elements */
-    /* translate values are applied via CSS variables updated by JS for parallax */
-    --bg-translate-x: 0px;
-    --bg-translate-y: 0px;
-    --bg-scroll-y: 0px;
-    transform: translate3d(var(--bg-translate-x), calc(var(--bg-translate-y) + var(--bg-scroll-y)), 0);
-    animation: hero-bg-move 12s linear infinite;
-    pointer-events: none;
-}
-
-/* Use pseudo-elements so we can crossfade gradients smoothly (opacity animation) */
-.hero__bg::before,
-.hero__bg::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    filter: blur(48px) saturate(140%);
-}
-
-.hero__bg::before {
-    background-image: radial-gradient(circle at 5% 15%, rgba(100, 108, 255, 0.28), transparent 28%),
-        radial-gradient(circle at 85% 85%, rgba(100, 200, 255, 0.16), transparent 28%);
-    opacity: 1;
-}
-
-.hero__bg::after {
-    background-image: radial-gradient(circle at 5% 15%, rgba(120, 200, 180, 0.26), transparent 28%),
-        radial-gradient(circle at 85% 85%, rgba(90, 160, 255, 0.14), transparent 28%);
-    opacity: 0;
-    animation: hero-bg-fade 90s ease-in-out infinite;
-}
-
-@keyframes hero-bg-fade {
-    0% {
-        opacity: 0
-    }
-
-    10% {
-        opacity: 0.25
-    }
-
-    40% {
-        opacity: 0.6
-    }
-
-    60% {
-        opacity: 0.6
-    }
-
-    90% {
-        opacity: 0.25
-    }
-
-    100% {
-        opacity: 0
-    }
-}
-
-.home__hero__content {
+.hero__content {
     position: relative;
-    z-index: 1;
+    z-index: 2;
+    max-width: 800px;
     width: 100%;
-    max-width: 900px;
-    margin: 0 auto;
     text-align: center;
+    padding: 1rem;
 }
 
-.home__title {
-    font-size: 2.25rem;
-    margin: 0 0 0.5rem 0;
+.hero__title {
+    font-size: 4rem;
+    font-weight: 700;
+    margin: 0;
+    background: linear-gradient(135deg, #78a9ff 0%, #4589ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
 }
 
-.home__subtitle {
-    color: rgba(255, 255, 255, 0.8);
-    margin: 0 0 1.25rem 0;
+.hero__description {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    margin: 2rem 0;
+    color: var(--text-secondary);
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-/* typing caret visuals */
-.home__subtitle.typing::after {
-    content: '';
-    display: inline-block;
-    width: 1px;
-    height: 1.05em;
-    background: rgba(255, 255, 255, 0.9);
-    margin-left: 6px;
-    vertical-align: text-bottom;
-    animation: caret-blink 700ms steps(1) infinite;
+.hero__highlight {
+    color: var(--accent);
+    font-weight: 600;
 }
 
-.home__subtitle.typed::after {
-    display: none
-}
-
-@keyframes caret-blink {
-    0% {
-        opacity: 1
-    }
-
-    50% {
-        opacity: 0
-    }
-
-    100% {
-        opacity: 1
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .home__subtitle.typing::after {
-        animation: none;
-        opacity: 1
-    }
-}
-
-.home__actions {
+.hero__actions {
     display: flex;
-    gap: 0.75rem;
+    gap: 1rem;
     justify-content: center;
-    margin-top: 1rem;
+    margin-top: 2rem;
 }
 
-.btn {
+.hero__cta {
     display: inline-block;
-    padding: 0.6rem 1rem;
-    border-radius: 8px;
-    background: #646cff;
-    color: white;
+    padding: 0.85rem 1.75rem;
+    font-size: 1rem;
+    font-weight: 600;
     text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    letter-spacing: 0.5px;
 }
 
-.btn--muted {
-    background: rgba(255, 255, 255, 0.08);
-    color: inherit;
+.hero__cta {
+    background: linear-gradient(135deg, #78a9ff 0%, #4589ff 100%);
+    color: white;
+    box-shadow: 0 4px 14px rgba(69, 137, 255, 0.4);
 }
 
-@media (min-width: 640px) {
-    .home__title {
-        font-size: 3rem
+.hero__cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(69, 137, 255, 0.6);
+}
+
+.hero__cta--secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--accent);
+    box-shadow: none;
+    border: 1px solid rgba(120, 169, 255, 0.4);
+}
+
+.hero__cta--secondary:hover {
+    background: rgba(120, 169, 255, 0.1);
+    box-shadow: 0 4px 12px rgba(120, 169, 255, 0.2);
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    .hero__title {
+        font-size: 3rem;
+    }
+
+    .hero__description {
+        font-size: 1.1rem;
+        max-width: 100%;
+    }
+
+    .hero__actions {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero__cta {
+        width: 80%;
+        text-align: center;
     }
 }
 
-@keyframes hero-bg-move {
-    0% {
-        transform: translate3d(0, 0, 0)
+@media (max-width: 480px) {
+    .hero__title {
+        font-size: 2.5rem;
     }
 
-    50% {
-        transform: translate3d(40px, -20px, 0)
+    .hero__actions {
+        width: 100%;
     }
 
-    100% {
-        transform: translate3d(0, 0, 0)
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .hero__bg {
-        animation: none;
-        filter: blur(30px)
+    .hero__cta {
+        width: 100%;
     }
 }

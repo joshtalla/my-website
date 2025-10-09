@@ -1,0 +1,211 @@
+.hero-bg {
+    position: absolute;
+    /* Change from fixed back to absolute */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+    background-color: #121212;
+    /* Darker background color to match site better */
+    /* Remove the margin technique since we're using fixed positioning */
+}
+
+.hero-bg__canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    cursor: default;
+    opacity: 1;
+}
+
+.hero-bg__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    /* Main gradients for visual effect */
+    background:
+        radial-gradient(circle at 20% 80%, rgba(120, 169, 255, 0.15) 0%, transparent 60%),
+        radial-gradient(circle at 80% 20%, rgba(255, 107, 107, 0.12) 0%, transparent 60%),
+        radial-gradient(circle at 40% 40%, rgba(120, 200, 180, 0.08) 0%, transparent 60%);
+}
+
+/* New edge gradients to blend into the website background */
+.hero-bg::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 2;
+    /* Edge gradients for blending into the site background */
+    background:
+        linear-gradient(to right, #121212 0%, transparent 8%, transparent 92%, #121212 100%),
+        linear-gradient(to bottom, transparent 90%, #121212 100%);
+}
+
+/* Left and right edge gradients for stronger blending */
+.hero-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 3;
+    /* Additional side gradients for smoother transition */
+    background:
+        linear-gradient(to right, #121212 0%, transparent 3%),
+        linear-gradient(to left, #121212 0%, transparent 3%);
+}
+
+/* Ensure hero content appears above the background */
+.hero__content {
+    position: relative;
+    z-index: 4;
+    /* Increased to be above all background layers */
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-bg__canvas {
+        display: none;
+    }
+
+    .hero-bg__overlay {
+        background:
+            radial-gradient(circle at 20% 80%, rgba(120, 169, 255, 0.05) 0%, transparent 50%),
+            radial-gradient(circle at 80% 20%, rgba(255, 107, 107, 0.04) 0%, transparent 50%);
+    }
+}
+
+@media (max-width: 720px) {
+    .hero-bg::after {
+        background:
+            linear-gradient(to right, #121212 0%, transparent 3%, transparent 97%, #121212 100%),
+            linear-gradient(to bottom, transparent 85%, #121212 100%);
+    }
+}
+
+/* Performance optimization for low-end devices */
+@media (max-resolution: 1dppx) {
+    .hero-bg__canvas {
+        transform: scale(0.8);
+        transform-origin: top left;
+    }
+}
+
+.page-bg {
+    position: fixed;
+    /* Changed from absolute to fixed */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+    /* Behind all content */
+    background-color: #1a1a1a;
+    /* Match your site's background color */
+}
+
+.page-bg__canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    cursor: default;
+    opacity: 1;
+}
+
+.page-bg__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    /* Full-page gradient overlays */
+    background:
+        radial-gradient(circle at 20% 30%, rgba(120, 169, 255, 0.12) 0%, transparent 70%),
+        radial-gradient(circle at 80% 20%, rgba(255, 107, 107, 0.10) 0%, transparent 70%),
+        radial-gradient(circle at 40% 80%, rgba(120, 200, 180, 0.08) 0%, transparent 70%);
+}
+
+/* New edge gradients optimized for page edges */
+.page-bg::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(to top, rgba(26, 26, 26, 0.8) 0%, transparent 10%),
+        linear-gradient(to bottom, rgba(26, 26, 26, 0.7) 0%, transparent 5%);
+}
+
+/* Additional vignette effect for visual depth */
+.page-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    background: radial-gradient(circle at center,
+            transparent 40%,
+            rgba(0, 0, 0, 0.4) 100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .page-bg__canvas {
+        display: none;
+    }
+
+    .page-bg__overlay {
+        background:
+            radial-gradient(circle at 20% 80%, rgba(120, 169, 255, 0.05) 0%, transparent 50%),
+            radial-gradient(circle at 80% 20%, rgba(255, 107, 107, 0.04) 0%, transparent 50%);
+    }
+}
+
+@media (max-width: 720px) {
+
+    /* Optimized gradients for mobile */
+    .page-bg__overlay {
+        background:
+            radial-gradient(circle at 50% 30%, rgba(120, 169, 255, 0.12) 0%, transparent 80%),
+            radial-gradient(circle at 80% 80%, rgba(255, 107, 107, 0.10) 0%, transparent 80%);
+    }
+}
+
+/* Performance optimization for low-end devices */
+@media (max-resolution: 1dppx) {
+    .page-bg__canvas {
+        transform: scale(0.6);
+        transform-origin: top left;
+    }
+}
