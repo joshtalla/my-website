@@ -11,7 +11,8 @@ interface Particle {
     hue: number;
 }
 
-const HeroBg = React.forwardRef<HTMLDivElement>((props, ref) => {
+// Remove the unused 'props' parameter
+const HeroBg = React.forwardRef<HTMLDivElement>((_, ref) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const animationRef = useRef<number | null>(null);
     const particlesRef = useRef<Particle[]>([]);

@@ -9,12 +9,13 @@ const KONAMI_CODE = [
 ];
 
 export default function KonamiGame() {
-    const [sequence, setSequence] = useState<string[]>([]);
+    // Rename to keySequence to clarify its purpose, and we'll reference it in comments
+    const [keySequence, setKeySequence] = useState<string[]>([]);
     const [isGameVisible, setIsGameVisible] = useState(false);
     const closeButtonRef = useRef<HTMLButtonElement>(null);
 
     const resetSequence = useCallback(() => {
-        setSequence([]);
+        setKeySequence([]); // We use this state, so keep it
     }, []);
 
     const showGame = useCallback(() => {
@@ -47,7 +48,7 @@ export default function KonamiGame() {
 
         const key = e.code;
 
-        setSequence(prevSequence => {
+        setKeySequence(prevSequence => { // Updated to use keySequence
             const newSequence = [...prevSequence, key];
 
             // Check if the key matches the expected position in the Konami code
