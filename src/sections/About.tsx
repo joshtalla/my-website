@@ -45,7 +45,6 @@ export default function About() {
                 <div className="about__content revamp">
                     <h2 className="about__title">About Me</h2>
                     <p className="about__sub">
-                        <span>🚀</span>
                         Building the future, one line at a time
                     </p>
 

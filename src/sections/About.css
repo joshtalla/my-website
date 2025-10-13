@@ -1,5 +1,11 @@
 .about {
-    padding: 3rem 1rem;
+    padding: 6rem 2rem;
+    /* Increased from 4rem to 6rem for more spacing */
+    background: transparent;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 4rem;
+    /* Added margin-bottom for spacing before Projects section */
 }
 
 .about__inner {
@@ -25,14 +31,21 @@
 .about__inner::before {
     content: '';
     position: absolute;
-    inset: 0;
-    border-radius: 12px;
-    z-index: 0;
-    pointer-events: none;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'><g fill='none' fill-rule='evenodd'><rect width='40' height='40' fill='none'/><circle cx='10' cy='10' r='0.9' fill='%23ffffff' opacity='0.06'/><circle cx='30' cy='10' r='0.9' fill='%23ffffff' opacity='0.06'/><circle cx='10' cy='30' r='0.9' fill='%23ffffff' opacity='0.06'/><circle cx='30' cy='30' r='0.9' fill='%23ffffff' opacity='0.06'/></g></svg>");
-    background-repeat: repeat;
-    mix-blend-mode: overlay;
-    opacity: 0.06;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.03);
+    /* Decreased from 0.02 to 0.03 */
+    background-image:
+        radial-gradient(circle at 20% 30%, rgba(120, 169, 255, 0.08) 0%, transparent 50%),
+        /* Decreased from 0.15 to 0.08 */
+        radial-gradient(circle at 80% 70%, rgba(255, 107, 107, 0.06) 0%, transparent 50%),
+        /* Decreased from 0.12 to 0.06 */
+        radial-gradient(circle at 40% 80%, rgba(120, 200, 180, 0.04) 0%, transparent 50%);
+    /* Decreased from 0.08 to 0.04 */
+    border-radius: inherit;
+    z-index: -1;
 }
 
 /* ensure the pseudo-element sits behind content inside the card */
