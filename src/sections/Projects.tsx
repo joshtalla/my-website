@@ -5,7 +5,7 @@ import uciThumb from '../assets/UCI Search Engine/SE_thumbnail.png'
 import alliThumb from '../assets/Alli/Alli_thumbnail.png'
 import paperThumb from '../assets/Paper/thumbnail.png'
 import zotThumb from '../assets/ZotLabs/thumbnail.png'
-import crThumb from '../assets/CR/cr-rl-thumbnail.jpeg'
+import crThumb from '../assets/CR/cr-rl-agent-thumbnail.jpeg'
 import mannequinThumb from '../assets/Modeling/mannequin-modeling-thumbnail.jpeg'
 
 export default function Projects() {
