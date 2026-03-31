@@ -5,6 +5,8 @@ import uciThumb from '../assets/UCI Search Engine/SE_thumbnail.png'
 import alliThumb from '../assets/Alli/Alli_thumbnail.png'
 import paperThumb from '../assets/Paper/thumbnail.png'
 import zotThumb from '../assets/ZotLabs/thumbnail.png'
+import crThumb from '../assets/CR/cr-rl-thumbnail.jpeg'
+import mannequinThumb from '../assets/Modeling/mannequin-modeling-thumbnail.jpeg'
 
 export default function Projects() {
     const projects = [
@@ -60,6 +62,37 @@ export default function Projects() {
                 'Performed image preprocessing including 50x50 resizing, grayscale conversion, and data balancing strategies that maintained controlled label variation to reduce overfitting.',
                 'Conducted comparative analysis of model architectures, removing underperforming LSTM-based RNNs due to poor results on static data.',
                 'Applied dropout regularization and tuned the RMSprop optimizer for faster convergence, achieving peak validation accuracy of 96.72% at epoch 3.'
+            ]
+        }, 
+        {
+            title: 'Clash Royale Non-Embedded Reinforcement Learning Agent',
+            role: 'Artificial Intelligence, Reinforcement Learning, Computer Vision',
+            dateRange: 'Jan 2026 - Mar 2026',
+            summary: 'A reinforcement learning agent that plays Clash Royale through screen capture, computer vision, imitation learning, and reinforcement learning.',
+            link: 'https://weihaog1.github.io/The-Elixir-Optimizers/index.html',
+            imageUrl: crThumb,
+            bullets: [
+                "Developed a reinforcement learning agent that plays Clash Royale using only screen capture and computer vision, without any game API access. ",
+                'Designed a two-stage learning pipeline: first trained with behavior cloning on professional human gameplay data, then fine-tuned with Proximal Policy Optimization (PPO) in live matches.',
+                'Engineered a hierarchical action decomposition to manage a large discrete action space (2,305 actions), enabling efficient learning from limited data.',
+                'Built a custom perception pipeline using YOLOv8 object detection, OCR for resource tracking, and card classification to extract game state from raw pixels.',
+                'Created a Gymnasium-comptabile environment to interfacce with the live game, including action masking to prevent illegal moves and iterative reward shaping for effective RL training.',
+                'Achieved a 30% win rate in final evaluation matches, demonstrating significant improvement over baseline and showcasing the agent\'s ability to learn real-time strategy gameplay.'
+            ]
+        }, 
+        {
+            title: '3D Mannequin Modeling (WIP)',
+            role: 'Computer Vision, 3D Modeling',
+            dateRange: 'Dec 2025',
+            summary: 'A project focused on creating realistic 3D mannequin models using computer vision techniques.',
+            link: 'https://github.com/joshtalla/mannequin-modeling',
+            imageUrl: mannequinThumb,
+            bullets: [
+                "Developed a photogrammetry pipeline to reconstruct high-fidelity 3D meshes of a mannequin from multi-view photographs using classical computer vision. ",
+                'Implemented camera calibration with checkerboard patterns to estimate intrinsic and correct lens distoration. ',
+                'Automated feature extraction and matching across images using SIFT/ORB and robust matching algorithms (FLANN/BFMatcher).',
+                'Built a Structure from Motion (SfM) module to estimate camera poses and triangulate sparse 3D point clouds from matches features.',
+                'Integrated dense reconstruction (multi-view stereo) and surface meshing (Poisson/Ball-pivoting) to generate watertight 3D models',
             ]
         }
     ]
